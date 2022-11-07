@@ -1,0 +1,16 @@
+body {
+  background-color: #F4F0BB;
+  min-height: 100vh;
+}
+.area{
+  background-color: #fff;
+  color: #43291F;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn-outline-success:hover{
+  background-color: #226F54;
+}
+.btn-outline-success{
+color: #226F54;
+}
