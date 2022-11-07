@@ -1,13 +1,16 @@
 <?php
 @session_start();
-require_once('../int/config.php');
-require_once('../int/verificar.php');
-$id_usuario = $_SESSION[]
-//Recuperar dados do usuarios
-$query = $pdo->query("SELECT * FROM usuarios WHERE nivel ='Admin'");
-$result = $query->fetchAll(PDO::FETCH_ASSOC);
-$total_reg = @count($result);
+require_once("../int/conexao.php");
+require_once("../int/verificar.php");
+$id_usuario = $_SESSION['id_usuario'];
 
+//Recuperar dados do usuarios
+$query = $pdo->query("SELECT * from usuarios where id = '$id_usuario' ");
+$result = $query->fetchAll(PDO::FETCH_ASSOC);
+$nome_usuario = $result[0]['nome'];
+$email_usuario = $result[0]['email'];
+$senha_usuario = $result[0]['senha'];
+$nivel_usuario = $result[0]['nivel'];
 
 ?>
 
@@ -51,7 +54,7 @@ $total_reg = @count($result);
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle show" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="true">
             <img src="../assets/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            <?php echo @$nome_usuario ?>
+            <?php echo $nome_usuario ?>
           </a>
 
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" data-popper-placement="top-end">
@@ -78,13 +81,13 @@ $total_reg = @count($result);
               <!--Nome-->
               <div class="row form-floating mt-3">
                 <input type="nome" class="form-control" id="floatingNome" placeholder="Nome" name="nome" 
-                value="<?php echo @$nome_usuario ?>">
+                value="<?php echo $nome_usuario ?>">
                 <label for="floatingNome">Nome Completo</label>
               </div>
               <!--Email-->
               <div class="row form-floating mt-3">
                 <input type="email" class="form-control" id="floatingEmail" placeholder="E-mail" name="email" 
-                value="<?php echo @$email_usuario?>">
+                value="<?php echo $email_usuario?>">
                 <label for="floatingEmail">E-mail</label>
               </div>
               <!--Senha-->

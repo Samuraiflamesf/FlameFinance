@@ -25,8 +25,7 @@ if ($total_reg >0) {
     }
 }else {
     echo "<script>window.alert('Dados Incorretos!')</script>";
-    echo "<script>window.location='../index.php'</script>";
-    
+    echo "<script>window.location='../index.php'</script>";    
 }
 
 
