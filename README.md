@@ -31,7 +31,7 @@ O FlameFinance é Sistema Financeiro Pessoal WEB, Criado com as tecnologias: PHP
 - [x] Quebrando a Sessão/Recuperando Dados do Usuario
 - [x] Adicionando AJAX
 - [x] Adicionando Data table 
-- [x] Adicionando DarkMode 
+- [x] Adicionando DarkModeJS
 - [ ] Resolvendo Bugs
 - [ ] Projeto Finalizado
 
