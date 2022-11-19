@@ -8,11 +8,11 @@
 
 <div align="center">
   
-[![Tech](https://skillicons.dev/icons?i=html,css,js,mysql,bootstrap,php,&theme=dark)](https://skillicons.dev)
+[![Tech](https://skillicons.dev/icons?i=html,css,js,bootstrap,mysql,php,&theme=dark)](https://skillicons.dev)
 
 </div>
 
-# 📄 Tipo do Projeto/Nome do Projeto
+# 📄 Sistema Financeiro WEB/FlameFinance
 <!-- ![status-finalizado](https://user-images.githubusercontent.com/62897976/185768561-589083e1-f18f-480b-9709-0ca24acf9c6d.svg) -->
 ![status-em-andamento](https://user-images.githubusercontent.com/62897976/185768581-1d051a52-2e60-4378-b31d-39028cbfb5c8.svg)
 
