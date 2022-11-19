@@ -13,10 +13,8 @@
 </div>
 
 # 📄 Tipo do Projeto/Nome do Projeto
-
-![status-finalizado](https://user-images.githubusercontent.com/62897976/185768561-589083e1-f18f-480b-9709-0ca24acf9c6d.svg)
+<!-- ![status-finalizado](https://user-images.githubusercontent.com/62897976/185768561-589083e1-f18f-480b-9709-0ca24acf9c6d.svg) -->
 ![status-em-andamento](https://user-images.githubusercontent.com/62897976/185768581-1d051a52-2e60-4378-b31d-39028cbfb5c8.svg)
-![status-descontinuado](https://user-images.githubusercontent.com/62897976/185768580-1dcbe992-a35c-4f36-8b2b-14d469203d02.svg)
 
 ### Resumo do Projeto
 
@@ -41,8 +39,8 @@ Nulla ipsum est do reprehenderit anim voluptate deserunt quis veniam quis velit 
 - [x] Quebrando a Sessão/Recuperando Dados do Usuario
 - [x] Adicionando AJAX
 - [x] Adicionando Data table 
+- [x] Adicionando DarkMode 
 - [ ] Resolvendo Bugs
-- [ ] 
 - [ ] Projeto Finalizado
 
 ## Considerações Finais
