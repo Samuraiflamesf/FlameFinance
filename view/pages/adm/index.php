@@ -1,7 +1,7 @@
 <?php
 @session_start();
-require_once("../int/conexao.php");
-require_once("../int/verificar.php");
+require_once("../../../int/conexao.php");
+require_once("../../../int/verificar.php");
 $id_usuario = $_SESSION['id_usuario'];
 
 //Recuperar dados do usuarios
@@ -12,30 +12,36 @@ $email_usuario = $result[0]['email'];
 $senha_usuario = $result[0]['senha'];
 $nivel_usuario = $result[0]['nivel'];
 $primeiroNome = strstr($nome_usuario, ' ', true);
+
+//Menus do Painel
+$menu1 = 'home';
+$menu2 = 'clientes';
+$menu3 = 'níveis';
+$menu4 = 'usuários';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt">
 
 <head>
+  <!-- Titulo -->
   <title><?php echo $nome_sistema ?></title>
   <!-- Meta tags Obrigatórias -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <!-- Styles Custom -->
-  <link rel="stylesheet" href="../assets/css/admin_page.css">
+  <link rel="stylesheet" href="../../../assets/css/admin_page.css">
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/b04ef94895.js" crossorigin="anonymous"></script>
   <!-- Ícone e Nome do site -->
-  <link rel="shortcut icon" href="../assets/img/FlameBox.ico">
+  <link rel="shortcut icon" href="../../../public/FlameBox.ico">
   <!-- AJAX -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap -->
-  <script type="text/javascript" src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
-  <!-- Titulo -->
+  <script type="text/javascript" src="../../../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -44,18 +50,33 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
       <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-start m-auto">
         <a href="/" class="d-none d-md-block  text-decoration-none me-lg-4">
           <!--Logo-->
-          <img src="../assets/img/FlameBox.ico" width="40" height="40" role="img" aria-label="Bootstrap">
+          <img src="../../../public/FlameBox.ico" width="40" height="40" role="img" aria-label="Bootstrap">
         </a>
+        <!-- Parte da navbar -->
         <ul class="nav nav-pills col-auto me-lg-auto mx-sm-2 mb-2 align-items-center justify-content-center mb-md-0 ml-2 ">
-          <li class="nav-item"><a href="#" class="nav-link px-2 active">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 ">1---1</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 ">2---2</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 ">3---3</a></li>
+          <!-- Parte do Home  -->
+          <li class="nav-item dropdown"><a class="nav-link px-2 active" href="index.php">Home</a></li>
+          <!-- Parte do dropdown do Cadastro  -->
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn nav-link px-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cadastros
+              </button>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="index.php?pag=,?php echo $menu2 ?">
+                    Clientes</a></li>
+                <li><a class="dropdown-item " href="index.php?pag=,?php echo $menu3 ?">
+                    Níveis de usuários</a></li>
+                <li><a class="dropdown-item" href="index.php?pag=,?php echo $menu4 ?">
+                    Usuários</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
 
         <div class="dropdown text-sm-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle show" id="dropdownUser1 " data-bs-toggle="dropdown" aria-expanded="true">
-            <img src="../assets/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="../../../assets/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
             <?php echo 'Olá, ' . $primeiroNome ?>
           </a>
 
@@ -70,7 +91,7 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="../int/logout.php">
+            <li><a class="dropdown-item" href="../../../int/logout.php">
                 <i class="fa-solid fa-right-from-bracket m-1"></i>
                 Sair</a></li>
           </ul>
@@ -79,11 +100,11 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
     </div>
   </header>
 
-  <div class="modal fade " id="modalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Editar Perfil</h5>
+          <h5 class="modal-title" id="modalEditarPerfil">Editar Perfil</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form id="form-perfil" method="post">
@@ -157,7 +178,7 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
       var formData = new FormData(this);
 
       $.ajax({
-        url: "../int/editarPerfil.php",
+        url: "../../../int/editarPerfil.php",
         type: 'POST',
         data: formData,
 

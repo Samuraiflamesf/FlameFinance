@@ -21,11 +21,11 @@ if ($total_reg >0) {
     $_SESSION['nome_usuario'] = $result[0]['nome'];
 
     if ($nivel == 'Admin') {
-        echo "<script>window.location='../painel-adm'</script>";
+        echo "<script>window.location='../view/pages/adm/index.php'</script>";
     }
 }else {
     echo "<script>window.alert('Dados Incorretos!')</script>";
-    echo "<script>window.location='../index.php'</script>";    
+    echo "<script>window.location='../public/index.php'</script>";    
 }
 
 

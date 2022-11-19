@@ -1,7 +1,7 @@
 <?php
 
 $nome_sistema = 'FlameFinance';
-$url_sistema = 'http://localhost/FlameFinance/';
+$url_sistema = 'http://localhost/FlameFinance/public/';
 $email_admin = 'samuraiflamesf@gmail.com';
 
 //Dados para o banco Dados

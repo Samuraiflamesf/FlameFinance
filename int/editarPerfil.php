@@ -1,5 +1,5 @@
 <?php 
-require_once("../int/conexao.php");
+require_once("conexao.php");
 $nome = $_POST['nome-usuario'];
 $email = $_POST['email-usuario'];
 $senha = $_POST['senha-usuario'];
