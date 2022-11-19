@@ -4,13 +4,11 @@
 
 </div>
 
-![Video-Aplicação](https://user-images.githubusercontent.com/62897976/185768202-9e2fda79-b014-4d99-a10e-1f0852a981a1.gif)
 
-<img src="./src/Assets/gif.gif" alt="Descrição da imagem">
 
 <div align="center">
   
-[![Tech](https://skillicons.dev/icons?i=html,css,js)](https://skillicons.dev)
+[![Tech](https://skillicons.dev/icons?i=html,css,js,mysql,bootstrap,php,&theme=dark)](https://skillicons.dev)
 
 </div>
 
@@ -34,10 +32,17 @@ Nulla ipsum est do reprehenderit anim voluptate deserunt quis veniam quis velit 
 
 ### 🎯 Implementações/Features
 
-- [ ] Começando
-- [ ] Estilos Globais do Projeto
-- [ ] Estruturação/Estilização Avançada
+- [x] Criando o Projeto Local
+- [x] Estilos Globais do Projeto
+- [x] Criando as conexões com Banco de Dados
+- [x] Criando Painel Administrativo
+- [x] Area do Usuario
+- [x] Estilização Avançada com Bootstrap 5
+- [x] Quebrando a Sessão/Recuperando Dados do Usuario
+- [x] Adicionando AJAX
+- [x] Adicionando Data table 
 - [ ] Resolvendo Bugs
+- [ ] 
 - [ ] Projeto Finalizado
 
 ## Considerações Finais
@@ -72,8 +77,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 **Link 1**
 
-- aaa
-- bbb
+- https://hugocursos.com.br/curso-de-sistema-financeiro-php-8
 
 **Link 2**
 

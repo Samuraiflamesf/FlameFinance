@@ -16,8 +16,16 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
 //Menus do Painel
 $menu1 = 'home';
 $menu2 = 'clientes';
-$menu3 = 'níveis';
+$menu3 = 'niveis';
 $menu4 = 'usuários';
+
+//Recuperar e direcionar pagina 
+if (@$_GET['pag'] == "") {
+  $pag = $menu1;
+} else {
+  $pag = @$_GET['pag'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -42,20 +50,23 @@ $menu4 = 'usuários';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <!-- Scripts Data Tables -->
+  <link rel="stylesheet" type="text/css" href=".../../../assets/vendor/DataTables/datatables.min.css" />
+  <script type="text/javascript" src="../../../assets/vendor/DataTables/datatables.min.js"></script>
 </head>
 
 <body>
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-start m-auto">
-        <a href="/" class="d-none d-md-block  text-decoration-none me-lg-4">
+        <a href="index.php?pag=<?php echo $menu1 ?>" class="d-none d-md-block  text-decoration-none me-lg-4">
           <!--Logo-->
           <img src="../../../public/FlameBox.ico" width="40" height="40" role="img" aria-label="Bootstrap">
         </a>
         <!-- Parte da navbar -->
         <ul class="nav nav-pills col-auto me-lg-auto mx-sm-2 mb-2 align-items-center justify-content-center mb-md-0 ml-2 ">
           <!-- Parte do Home  -->
-          <li class="nav-item dropdown"><a class="nav-link px-2 active" href="index.php">Home</a></li>
+          <li class="nav-item dropdown"><a class="nav-link px-2 active" href="index.php?pag=<?php echo $menu1 ?>">Home</a></li>
           <!-- Parte do dropdown do Cadastro  -->
           <li class="nav-item">
             <div class="dropdown">
@@ -63,17 +74,17 @@ $menu4 = 'usuários';
                 Cadastros
               </button>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="index.php?pag=,?php echo $menu2 ?">
+                <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu2 ?>">
                     Clientes</a></li>
-                <li><a class="dropdown-item " href="index.php?pag=,?php echo $menu3 ?">
+                <li><a class="dropdown-item " href="index.php?pag=<?php echo $menu3 ?>">
                     Níveis de usuários</a></li>
-                <li><a class="dropdown-item" href="index.php?pag=,?php echo $menu4 ?">
+                <li><a class="dropdown-item" href="index.php?pag=<?php echo $menu4 ?>">
                     Usuários</a></li>
               </ul>
             </div>
           </li>
         </ul>
-
+        <!-- DropdownMenu do perfil -->
         <div class="dropdown text-sm-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle show" id="dropdownUser1 " data-bs-toggle="dropdown" aria-expanded="true">
             <img src="../../../assets/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -99,7 +110,7 @@ $menu4 = 'usuários';
       </div>
     </div>
   </header>
-
+  <!-- Modal para editar perfil -->
   <div class="modal fade" id="modalPerfil" tabindex="-1" aria-labelledby="modalEditarPerfil" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -151,6 +162,13 @@ $menu4 = 'usuários';
       </div>
     </div>
   </div>
+
+  <div class="container-fluid mb-b4">
+    <?php
+    require_once($pag . '.php');
+    ?>
+  </div>
+
   <!-- Botão Password -->
   <script type="text/javascript">
     let pass = true;
