@@ -5,8 +5,8 @@ $pagina = 'niveis';
 
 ?>
 
-<div class="col-md-12 mt-4">
-    <a type="button" class="btn btn-dark">Novo Nível</a>
+<div class="col-md-12 mt-4 ">
+    <a type="button" class="btn btn-primary darkmode-ignore ">Novo Nível</a>
     <table id="example" class="table table-hover my-4" style="width:100%">
         <thead>
             <tr>
@@ -23,3 +23,11 @@ $pagina = 'niveis';
     </table>
 
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "ordering": false
+        });
+    });
+</script>

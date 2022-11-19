@@ -18,15 +18,7 @@
 
 ### Resumo do Projeto
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,
-
-### Situação Problema
-
-Eu ea laboris reprehenderit fugiat voluptate incididunt eu consectetur nostrud.
-
-### Objetivo da Intervenção
-
-Nulla ipsum est do reprehenderit anim voluptate deserunt quis veniam quis velit occaecat. Consectetur anim cupidatat qui cupidatat aute minim esse. Reprehenderit laborum pariatur anim cillum anim cupidatat fugiat enim elit ex labore. Veniam laboris officia sunt consequat. Nostrud aute ullamco eiusmod reprehenderit consequat. Duis nisi commodo sit nostrud elit.
+O FlameFinance é Sistema Financeiro Pessoal WEB, Criado com as tecnologias: PHP 8 PDO,Mysql, AJax, Javascript e Bootstrap 5. Afim de ajudar a administrarem meus ganhos e gastos. Busco fazer um sistema fácil, completo, para uso diariamente.
 
 ### 🎯 Implementações/Features
 
@@ -73,11 +65,11 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 ## 📕 Referencias e Links Complementares
 
-**Link 1**
+**Curso Base**
 
 - https://hugocursos.com.br/curso-de-sistema-financeiro-php-8
 
-**Link 2**
+**Link de Templates Usadas**
 
-- aaa
-- bbb
+- https://github.com/Samuraiflamesf/LoginAdmin-FlameBox
+- https://github.com/Samuraiflamesf/PageLogin-Flamebox

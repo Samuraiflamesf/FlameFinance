@@ -1,16 +1,38 @@
-body {
-  background-color: #F4F0BB;
-  min-height: 100vh;
-}
-.area{
-  background-color: #fff;
-  color: #43291F;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.btn-outline-success:hover{
-  background-color: #226F54;
-}
-.btn-outline-success{
-color: #226F54;
-}
+:root{
+
+    --third:#4B1814;
+    --gray: #242325;
+    --black: #050101;
+   }
+  
+  body {
+    min-height: 100vh;
+    background: linear-gradient(45deg,#C2DBF5,#12B3EB,#112A46);
+    background-size: 150% 200%;
+    animation: colors ease-in;
+    -webkit-animation: colors 15s ease-in infinite;
+  }
+  @keyframes colors{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+  }
+  .area{
+    background-color: #fff;
+    color: #000000;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .btn-outline-success:hover{
+    background-color: #226F54;
+  }
+  .btn-outline-success{
+  color: #226F54;
+  }
+  

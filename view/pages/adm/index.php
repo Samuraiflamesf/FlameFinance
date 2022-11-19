@@ -17,7 +17,7 @@ $primeiroNome = strstr($nome_usuario, ' ', true);
 $menu1 = 'home';
 $menu2 = 'clientes';
 $menu3 = 'niveis';
-$menu4 = 'usuários';
+$menu4 = 'usuarios';
 
 //Recuperar e direcionar pagina 
 if (@$_GET['pag'] == "") {
@@ -68,9 +68,9 @@ if (@$_GET['pag'] == "") {
           <!-- Parte do Home  -->
           <li class="nav-item dropdown"><a class="nav-link px-2 active" href="index.php?pag=<?php echo $menu1 ?>">Home</a></li>
           <!-- Parte do dropdown do Cadastro  -->
-          <li class="nav-item">
+          <li class="nav-item px-2 ">
             <div class="dropdown">
-              <button class="btn nav-link px-2 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn nav-link px-2 dropdown-toggle bg-white rounded p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Cadastros
               </button>
               <ul class="dropdown-menu dropdown-menu-dark">
@@ -85,7 +85,7 @@ if (@$_GET['pag'] == "") {
           </li>
         </ul>
         <!-- DropdownMenu do perfil -->
-        <div class="dropdown text-sm-end">
+        <div class="dropdown text-sm-end darkmode-ignore bg-white rounded p-1">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle show" id="dropdownUser1 " data-bs-toggle="dropdown" aria-expanded="true">
             <img src="../../../assets/img/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
             <?php echo 'Olá, ' . $primeiroNome ?>
@@ -226,6 +226,9 @@ if (@$_GET['pag'] == "") {
 
     });
   </script>
+  <!-- Script do Darkmode -->
+  <script src="../../../assets/vendor/darkmodeJs/darkmode.js"></script>
+  
 
 </body>
 
