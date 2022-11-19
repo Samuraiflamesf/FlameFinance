@@ -18,7 +18,7 @@
 
 ### Resumo do Projeto
 
-O FlameFinance é Sistema Financeiro Pessoal WEB, Criado com as tecnologias: PHP 8 PDO,Mysql, AJax, Javascript e Bootstrap 5. Afim de ajudar a administrarem meus ganhos e gastos. Busco fazer um sistema fácil, completo, para uso diariamente.
+O FlameFinance é Sistema Financeiro Pessoal WEB, Criado com as tecnologias: PHP 8 PDO,Mysql, AJax, Javascript e Bootstrap 5. Afim de ajudar administração de ganhos e gastos. Busco fazer um sistema fácil, completo, para uso diariamente.
 
 ### 🎯 Implementações/Features
 
