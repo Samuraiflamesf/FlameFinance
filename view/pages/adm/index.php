@@ -38,8 +38,6 @@ if (@$_GET['pag'] == "") {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <!-- Styles Custom -->
   <link rel="stylesheet" href="../../../assets/css/admin_page.css">
   <!-- Font Awesome -->
@@ -49,10 +47,12 @@ if (@$_GET['pag'] == "") {
   <!-- AJAX -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../../../assets/vendor/bootstrap/jquery-3.6.0.min.js"></script>
   <!-- Scripts Data Tables -->
-  <link rel="stylesheet" type="text/css" href=".../../../assets/vendor/DataTables/datatables.min.css" />
-  <script type="text/javascript" src="../../../assets/vendor/DataTables/datatables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href=".../../../assets/vendor/DataTables/" />
+  <script type="text/javascript" src="../../../assets/vendor/DataTables/datatables.js"></script>
 </head>
 
 <body>
@@ -163,7 +163,7 @@ if (@$_GET['pag'] == "") {
     </div>
   </div>
 
-  <div class="container-fluid mb-b4">
+  <div class="container-fluid p-4" id="container">
     <?php
     require_once($pag . '.php');
     ?>
@@ -228,6 +228,7 @@ if (@$_GET['pag'] == "") {
   </script>
   <!-- Script do Darkmode -->
   <script src="../../../assets/vendor/darkmodeJs/darkmode.js"></script>
+
   
 
 </body>

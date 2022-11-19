@@ -4,6 +4,13 @@
   margin: 0px;
   transform: translate(-110px, -34.4375px);
 }
-.darkmode--activated {
-  mix-blend-mode: difference;
+
+.darkmode--activated #container {
+  color: #fff;
+}
+.darkmode--activated #container th{
+  color: #fff;
+}
+.darkmode--activated #container tr{
+  color: rgb(214, 214, 214);
 }
