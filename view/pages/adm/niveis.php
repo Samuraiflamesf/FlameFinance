@@ -6,41 +6,54 @@ $pagina = 'niveis';
 ?>
 
 <div class="col-md-12 my-3 ">
-    <a type="button" class="btn btn-primary darkmode-ignore">Novo Nível</a>
+    <a type="button" class="btn btn-primary darkmode-ignore" data-bs-toggle="modal" data-bs-target="#modalForm">Novo Nível</a>
 </div>
 
-<table id="example" class="table table-hover my-4 w-100">
-    <thead class="table-dark">
-        <tr>
-            <th>Nível</th>
 
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        $query = $pdo->query("SELECT * from niveis order by id desc");
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < @count($result); $i++) {
-            foreach ($result[$i] as $key => $value) {
-            }
-        ?>
-            <tr>
-                <td><?php echo $result[$i]['nivel'] ?></td>
-                <td>02</td>
-            </tr>
-        <?php } ?>
-    </tbody>
-</table>
+<table id="tabela" class="table table-hover my-4 w-100" id="lista" >
+</table>    
 
+
+
+<!-- Modal Form  -->
+<div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalForm" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalForm">
+                    <span class="Titulo Modal">Inserir Registro</span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form" method="post">
+                <div class="modal-body p-4">
+                    <!--Nome-->
+                    <div class="row form-floating mt-3">
+                        <input type="text" class="form-control" id="nivel" placeholder="Nível" name="nivel">
+                        <label for="nivel">Nível</label>
+                    </div>
+                    <small>
+                        <div id="mensagem"></div>
+                    </small>
+
+                    <input type="" name="id-usuario" value="<?php echo $id_usuario ?>">
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="btn-fechar">
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
+</div>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable({
-            "ordering": false,
-            "language": {
-                url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json"
-            }
-        });
-    });
+    var pag = "<?= $pagina ?>"
 </script>
+
+
+<script src="../../../assets/js/ajax.js"></script>

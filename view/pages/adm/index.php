@@ -47,6 +47,7 @@ if (@$_GET['pag'] == "") {
   <!-- AJAX -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/jquery-3.6.0.min.js"></script>

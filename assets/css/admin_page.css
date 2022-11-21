@@ -4,7 +4,10 @@
   margin: 0px;
   transform: translate(-110px, -34.4375px);
 }
-
+#tabela a{
+  text-decoration: none;
+  
+}
 .darkmode--activated #container {
   color: #fff;
 }
