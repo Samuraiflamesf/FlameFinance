@@ -10,8 +10,9 @@ $pagina = 'niveis';
 </div>
 
 
-<table id="tabela" class="table table-hover my-4 w-100" id="lista" >
-</table>    
+<div class="tabela" id="listar">
+
+</div>
 
 
 
@@ -21,7 +22,7 @@ $pagina = 'niveis';
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalForm">
-                    <span class="Titulo Modal">Inserir Registro</span>
+                    <span class="tituloModal" id="tituloModal">Inserir Registro</span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

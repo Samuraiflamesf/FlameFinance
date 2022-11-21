@@ -57,6 +57,7 @@ if (@$_GET['pag'] == "") {
 </head>
 
 <body>
+  <!-- Barra de Navegação -->
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-start m-auto">
@@ -163,7 +164,7 @@ if (@$_GET['pag'] == "") {
       </div>
     </div>
   </div>
-
+<!-- Aonde é colocado a table -->
   <div class="container-fluid p-4" id="container">
     <?php
     require_once($pag . '.php');
@@ -230,7 +231,7 @@ if (@$_GET['pag'] == "") {
   <!-- Script do Darkmode -->
   <script src="../../../assets/vendor/darkmodeJs/darkmode.js"></script>
 
-  
+
 
 </body>
 

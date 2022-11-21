@@ -1,6 +1,7 @@
-$(document).ready(function () {
-    listar();
-});
+$(document).ready(function() {
+  listar();
+} );
+
 
 $("#form").submit(function () {
   event.preventDefault();
@@ -9,14 +10,18 @@ $("#form").submit(function () {
     url: pag + "/inserir.php",
     type: "POST",
     data: formData,
+    
     success: function (mensagem) {
+      $("#mensagem").text('');
       $("#mensagem").removeClass();
       if (mensagem.trim() == "Salvo com Sucesso!") {
         $("#btn-fechar").click();
         listar();
       } else {
+        console.log(mensagem);
+        $("#mensagem").text(mensagem);
       }
-      $("#mensagem").text(mensagem);
+     
     },
 
     cache: false,
@@ -26,15 +31,13 @@ $("#form").submit(function () {
 });
 
 function listar() {
-    $.ajax({
-      url: pag + "/listar.php",
-      method: "POST",
-      data: $("#form").serialize(),
-      dataType: "html",
-  
-      success: function (result) {
-        $("#listar").html(result);
-      },
-    });
-  }
-  
+  $.ajax({
+    url: pag + "/listar.php",
+    method: "POST",
+    dataType: "html",
+
+    success: function (result) {
+      $("#listar").html(result);
+    },
+  });
+}

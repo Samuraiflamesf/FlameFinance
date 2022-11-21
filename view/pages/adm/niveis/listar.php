@@ -2,6 +2,7 @@
 require_once("../../../../int/conexao.php");
 
 echo <<<HTML
+<table id="tabela" class="table table-hover my-4 w-100" >
 <thead class="table-dark">
 <tr>
 <th>Nível</th>
@@ -21,9 +22,9 @@ for ($i = 0; $i < @count($result); $i++) {
         
     <td>{$result[$i]['nivel']}</td>
     <td>
-    <a href="" title="Editar Registro">    <i class="bi bi-pencil-square text-primary"></i>
+    <a  onclick="editar('{$result[$i]['id']}','{$result[$i]['nivel']}')" title="Editar Registro">    <i class="bi bi-pencil-square text-primary"></i>
     </a>
-    <a href="" title="Excluir Registro">    <i class="bi bi-trash text-danger"></i>
+    <a title="Excluir Registro">    <i class="bi bi-trash text-danger"></i>
     </a>
     </td>
     </tr>
@@ -31,18 +32,28 @@ for ($i = 0; $i < @count($result); $i++) {
 }
 echo <<<HTML
 </tbody>
+</table>    
+
 HTML;
 
 ?>
 <script>
     $(document).ready(function() {
-        listar().
-        $("#tabela").DataTable({
-            ordering: false,
+        $('#tabela').DataTable({
+            "ordering": false,
             language: {
                 url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json",
             },
         });
 
     });
+
+    function editar(id, nivel) {
+        $('#id').val(id);
+        $('#nivel').val(nivel);
+        $('#tituloModal').text('Editar Registro');
+        var myModal = new bootstrap.Modal(document.getElementById('modalForm'));
+        myModal.show();
+
+    }
 </script>
