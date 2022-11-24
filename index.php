@@ -1,5 +1,5 @@
 <?php
 // index.php
-header("Location: http://localhost/FlameFinance/public/index.php");
+header("Location: public/index.php");
 exit();
 ?>

@@ -52,7 +52,7 @@ if (@$_GET['pag'] == "") {
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="../../../assets/vendor/bootstrap/jquery-3.6.0.min.js"></script>
   <!-- Scripts Data Tables -->
-  <link rel="stylesheet" type="text/css" href=".../../../assets/vendor/DataTables/" />
+  <link rel="stylesheet" type="text/css" href=".../../../assets/vendor/DataTables/datatables.css" />
   <script type="text/javascript" src="../../../assets/vendor/DataTables/datatables.js"></script>
 </head>
 
