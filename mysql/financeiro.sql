@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Nov-2022 às 13:33
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 28-Nov-2022 às 10:57
+-- Versão do servidor: 10.4.25-MariaDB
+-- versão do PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,42 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `financeiro`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `niveis`
+--
+
+CREATE TABLE `niveis` (
+  `id` int(11) NOT NULL,
+  `nivel` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `niveis`
+--
+
+INSERT INTO `niveis` (`id`, `nivel`) VALUES
+(1, 'Admin'),
+(2, 'Comum'),
+(5, '11'),
+(6, '111'),
+(7, '1111111'),
+(8, ''),
+(9, '55'),
+(10, '5'),
+(11, '44'),
+(12, '5555'),
+(13, '1'),
+(14, '6'),
+(15, '65'),
+(16, '65aaaa'),
+(17, '65aaa'),
+(18, '65aa'),
+(19, '12'),
+(20, '121'),
+(21, '122');
 
 -- --------------------------------------------------------
 
@@ -48,6 +84,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `nivel`) VALUES
 --
 
 --
+-- Índices para tabela `niveis`
+--
+ALTER TABLE `niveis`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -56,6 +98,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `niveis`
+--
+ALTER TABLE `niveis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
