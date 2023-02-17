@@ -31,9 +31,9 @@ if ($total_reg2 == 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/vendor/bootstrap/bootstrap.min.css">
     <!-- Styles Custom -->
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b04ef94895.js" crossorigin="anonymous"></script>
     <!-- Ícone e Nome do site -->
