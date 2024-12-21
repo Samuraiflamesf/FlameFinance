@@ -34,10 +34,10 @@
    composer install && composer update
    ```
    Ou:
-```bash
+   ```bash
    composer install
    ```
-```bash
+   ```bash
    composer update
    ```
 
