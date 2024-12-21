@@ -31,7 +31,7 @@
 
 2. Execute o comando:  
    ```bash
-   composer install
+   composer install && composer update
    ```
 
 3. Copie e configure o arquivo **`.env`**:  
