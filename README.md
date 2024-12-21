@@ -12,6 +12,10 @@
 
 **FlameFinance** é um aplicativo intuitivo e poderoso para o gerenciamento de finanças pessoais, projetado para ajudá-lo a controlar suas finanças de forma eficaz e simplificada. Ele foi desenvolvido em **PHP** (utilizando o **Laravel Framework**) e o **Filament v3**.
 
+## Para verificar andamento do Projeto:
+
+https://tree.taiga.io/project/samuraiflamesf-flamefinance/
+
 ## **Funcionalidades**
 - Multi conta  
 - Multi moeda  
@@ -21,7 +25,8 @@
 - Metas  
 - Dívidas  
 - Transações  
-- Relatórios  
+- Relatórios
+
 
 ## **Instalação**
 1. Clone o repositório:  
