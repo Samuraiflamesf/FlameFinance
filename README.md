@@ -26,7 +26,7 @@
 ## **Instalação**
 1. Clone o repositório:  
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/Samuraiflamesf/FlameFinance.git
    ```
 
 2. Execute o comando:  
