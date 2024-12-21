@@ -1,13 +1,4 @@
-<p align="center">
-	<a href="#"  target="_blank" title="Dinero">
-		<img src="/public/brands/dinero-logo.png" alt="Dinero" width="340px">
-	</a>
-</p>
-
-<br>
-
-<p align="center">:rocket: Multi Account Money Tracker :sparkles: <a href="https://github.com/Shipu/dinero">Dinero</a></p>
-
+<h1 align="center"> FlameFinance </h1>
 <p align="center">
 	<img src="https://img.shields.io/badge/version project-1.0-brightgreen" alt="version project">
     <img src="https://img.shields.io/badge/Php-8.1-informational" alt="stack php">
@@ -19,94 +10,59 @@
 	</a>
 </p>
 
-## Dinero
-Dinero is a multi account money tracker. It is a simple application that allows you to track your money in multiple accounts and categories. It is written in PHP (Laravel Framework) and  Filament v3.
+**FlameFinance** é um aplicativo intuitivo e poderoso para o gerenciamento de finanças pessoais, projetado para ajudá-lo a controlar suas finanças de forma eficaz e simplificada. Ele foi desenvolvido em **PHP** (utilizando o **Laravel Framework**) e o **Filament v3**.
 
-## Features
-- Multi Account (Tenants)
-- Multi Currency
-- Wallets
-- Categories
-- Budgets
-- Goals
-- Debts
-- Transactions
-- Reports
+## **Funcionalidades**
+- Multi conta  
+- Multi moeda  
+- Carteiras  
+- Categorias  
+- Orçamentos  
+- Metas  
+- Dívidas  
+- Transações  
+- Relatórios  
 
-## Installation
-1. Clone the repository
+## **Instalação**
+1. Clone o repositório:  
+   ```bash
+   git clone <url-do-repositorio>
+   ```
 
-```ssh 
-git clone https://github.com/Shipu/dinero.git
-```
+2. Execute o comando:  
+   ```bash
+   composer install
+   ```
 
-3. Switch to the repo folder
+3. Copie e configure o arquivo **`.env`**:  
+   ```bash
+   cp .env.example .env
+   ```
 
-```
-cd dinero
-```
+4. Gere a chave da aplicação:  
+   ```bash
+   php artisan key:generate
+   ```
 
-2. Install all the dependencies using composer
+5. Execute as migrações do banco de dados com os seeders (certifique-se de configurar a conexão com o banco no arquivo **`.env`** antes de migrar):  
+   ```bash
+   php artisan migrate --seed
+   ```
 
-```ssh 
-composer install
-```
+6. Inicie a aplicação:  
+   ```bash
+   php artisan serve
+   ```
 
-3. Copy the example env file and make the required configuration changes in the .env file
+7. Acesse a aplicação no navegador:  
+   > URL: [http://localhost:8000/](http://localhost:8000/)
 
-```ssh 
-cp .env.example .env
-```
+8. Faça login utilizando as seguintes credenciais:  
+   - **E-mail**: `admin@admin.com`  
+   - **Senha**: `12345678`  
 
-4. Generate a new application key
 
-```ssh 
-php artisan key:generate
-```
-
-5. Run the database migrations with seeder (Set the database connection in .env before migrating)
-
-```ssh 
-php artisan migrate --seed
-```
-
-6. Run the application
-
-```ssh 
-php artisan serve
-```
-
-7. Browse the application
-
-> Url: [http://localhost:8000/](http://localhost:8000/)
-
-![img.png](img.png)
-
-8. Login with the following credentials:
-- Email: `demo@dinero.app`
-- Password: `12345678`
-
-## NativePHP
-for the NativePHP version, please check the [nativephp branch](https://github.com/shipu/dinero/tree/native-php)
-```ssh
-git checkout native-php
-```
-
-## Demo
-> Url: [http://dinero.bridgex.live](http://dinero.bridgex.live)
-
-## Screenshots
-![Dashboard](screenshots/dinero-dashboard.png)
-![Wallets](screenshots/dinero-wallets.png)
-![Categories](screenshots/dinero-categories.png)
-![Budgets](screenshots/dinero-budgets.png)
-![Goals](screenshots/dinero-goals.png)
-![Debts](screenshots/dinero-debts.png)
-![Transactions](screenshots/dinero-transactions.png)
-![Accounts](screenshots/dinero-tenants.png)
-![MyProfile](screenshots/dinero-my-profile.png)
-
-### :sparkles: Contributors
+### :sparkles: Contribuidores
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Shipu">
@@ -124,4 +80,4 @@ git checkout native-php
   </tr>
 </table>
 
-> No one is so wise that they don't have something to learn, nor so foolish that they don't have something to teach. `Blaise Pascal`.
+> Ninguém é tão sábio que não tenha algo a aprender, nem tão tolo que não tenha algo a ensinar. `Blaise Pascal`.
