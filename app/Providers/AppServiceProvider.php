@@ -2,11 +2,12 @@
 
 namespace App\Providers;
 
-use Bavix\Wallet\WalletConfigure;
 use Filament\Support\Assets\Css;
-use Filament\Support\Facades\FilamentAsset;
+use Bavix\Wallet\WalletConfigure;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Filament\Support\Facades\FilamentAsset;
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
         WalletConfigure::ignoreMigrations();
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $switch
+                ->locales(['pt_BR', 'en'])
+                ->labels([
+                    'pt_BR' => 'Português (BR)',
+                    'en' => 'English',
+                ])
+                ->circular()
+            ;
+        });
     }
 }

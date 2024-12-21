@@ -36,7 +36,7 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Sky,
             ])
             ->sidebarWidth('17rem')
-            ->favicon(asset('brands/dinero-favicon.png'))
+            ->favicon(asset('brands/favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -44,8 +44,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-//                Widgets\AccountWidget::class,
-//                Widgets\FilamentInfoWidget::class,
+                //                Widgets\AccountWidget::class,
+                //                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -75,8 +75,8 @@ class AdminPanelProvider extends PanelProvider
             ->tenant(model: Account::class, slugAttribute: 'id', ownershipRelationship: 'owner')
             ->tenantRegistration(RegisterAccount::class)
             ->tenantProfile(EditAccountProfile::class)
-            ->renderHook( 'panels::content.start', function () {
-                if(config('app.demo')) {
+            ->renderHook('panels::content.start', function () {
+                if (config('app.demo')) {
                     return view('banner');
                 }
                 return null;
