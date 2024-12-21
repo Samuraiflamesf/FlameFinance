@@ -33,6 +33,13 @@
    ```bash
    composer install && composer update
    ```
+   Ou:
+```bash
+   composer install
+   ```
+```bash
+   composer update
+   ```
 
 3. Copie e configure o arquivo **`.env`**:  
    ```bash
