@@ -31,7 +31,22 @@ class BudgetResource extends Resource
 
     protected static ?string $navigationIcon = 'lucide-calculator';
 
-    protected static ?int $navigationSort = 300;
+    protected static ?int $navigationSort = 2;
+
+    public static function getModelLabel(): string
+    {
+        return __('budgets.title_singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('budgets.title');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.getNavigationGroup1');
+    }
 
     public static function form(Form $form): Form
     {
@@ -60,7 +75,7 @@ class BudgetResource extends Resource
                             ->relationship(
                                 name: 'categories',
                                 titleAttribute: 'name',
-                                modifyQueryUsing: fn (Builder $query) => $query->tenant()->where('type', SpendTypeEnum::EXPENSE->value),
+                                modifyQueryUsing: fn(Builder $query) => $query->tenant()->where('type', SpendTypeEnum::EXPENSE->value),
                             )
                             ->searchable()
                             ->preload()
@@ -88,26 +103,26 @@ class BudgetResource extends Resource
                                     ->placeholder(collect(__('utilities.weekdays'))->first())
                                     ->searchable()
                                     ->preload()
-                                    ->visible(fn (Get $get) => $get('period') === BudgetPeriodEnum::WEEKLY->value),
+                                    ->visible(fn(Get $get) => $get('period') === BudgetPeriodEnum::WEEKLY->value),
                                 Select::make('day_of_month')
                                     ->label(__('budgets.fields.day_of_month'))
                                     ->options(month_ordinal_numbers())
                                     ->searchable()
                                     ->preload()
                                     ->placeholder(month_ordinal_numbers()->first())
-                                    ->visible(fn (Get $get) => in_array($get('period'), BudgetPeriodEnum::toArrayExcept([BudgetPeriodEnum::WEEKLY->value]))),
+                                    ->visible(fn(Get $get) => in_array($get('period'), BudgetPeriodEnum::toArrayExcept([BudgetPeriodEnum::WEEKLY->value]))),
                                 Select::make('month_of_quarter')
                                     ->label(__('budgets.fields.month_of_quarter'))
                                     ->options(__('utilities.quarter_months'))
                                     ->preload()
                                     ->searchable()
-                                    ->visible(fn (Get $get) => $get('period') === BudgetPeriodEnum::QUARTERLY->value),
+                                    ->visible(fn(Get $get) => $get('period') === BudgetPeriodEnum::QUARTERLY->value),
                                 Select::make('month_of_year')
                                     ->label(__('budgets.fields.month_of_year'))
                                     ->options(__('utilities.months'))
                                     ->preload()
                                     ->searchable()
-                                    ->visible(fn (Get $get) => $get('period') === BudgetPeriodEnum::YEARLY->value),
+                                    ->visible(fn(Get $get) => $get('period') === BudgetPeriodEnum::YEARLY->value),
                             ]),
                         Toggle::make('status')
                             ->required()
@@ -117,7 +132,7 @@ class BudgetResource extends Resource
                             ->afterStateHydrated(function (Toggle $component, string $state) {
                                 $component->state($state == VisibilityStatusEnum::ACTIVE->value);
                             })
-                            ->dehydrateStateUsing(fn (string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value),
+                            ->dehydrateStateUsing(fn(string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value),
                     ])->columns(),
             ]);
     }
@@ -147,12 +162,12 @@ class BudgetResource extends Resource
                     ->color(fn(?Model $record) => $record->spend_amount * -1 > $record->amount ? 'danger' : ''),
                 Tables\Columns\IconColumn::make('status')
                     ->label(__('budgets.fields.enabled'))
-                    ->icon(fn (string $state): string => match ($state) {
+                    ->icon(fn(string $state): string => match ($state) {
                         VisibilityStatusEnum::ACTIVE->value => 'lucide-check-circle',
                         VisibilityStatusEnum::INACTIVE->value => 'lucide-x-circle',
                         default => 'lucide-x-circle',
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         VisibilityStatusEnum::ACTIVE->value => 'success',
                         VisibilityStatusEnum::INACTIVE->value => 'danger',
                         default => 'gray',
@@ -175,14 +190,14 @@ class BudgetResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -190,8 +205,8 @@ class BudgetResource extends Resource
             'create' => Pages\CreateBudget::route('/create'),
             'edit' => Pages\EditBudget::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

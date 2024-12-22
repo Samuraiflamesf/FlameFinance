@@ -24,8 +24,11 @@ class TransactionChart extends ApexChartWidget
      *
      * @var string|null
      */
-    protected static ?string $heading = 'Transactions';
 
+    protected function getHeading(): ?string
+    {
+        return __('messages.transactionChart');
+    }
     /**
      * Chart options (series, labels, types, size, animations...)
      * https://apexcharts.com/docs/options

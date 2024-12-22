@@ -28,16 +28,19 @@ class ListTransactions extends ListRecords
     {
         return [
             'all' => Tab::make()
+                ->label(__('messages.all'))
                 ->icon('lucide-calculator')
                 ->badge(Transaction::tenant()->count()),
             TransactionTypeEnum::WITHDRAW->value => Tab::make()
+                ->label(__('messages.withdraw'))
                 ->icon('lucide-trending-down')
                 ->badge(Transaction::tenant()->where('type', TransactionTypeEnum::WITHDRAW->value)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('type', TransactionTypeEnum::WITHDRAW->value)),
+                ->modifyQueryUsing(fn(Builder $query) => $query->where('type', TransactionTypeEnum::WITHDRAW->value)),
             TransactionTypeEnum::DEPOSIT->value => Tab::make()
+                ->label(__('messages.deposit'))
                 ->icon('lucide-trending-up')
                 ->badge(Transaction::tenant()->where('type', TransactionTypeEnum::DEPOSIT->value)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('type', TransactionTypeEnum::DEPOSIT->value)),
+                ->modifyQueryUsing(fn(Builder $query) => $query->where('type', TransactionTypeEnum::DEPOSIT->value)),
         ];
     }
 }

@@ -28,7 +28,22 @@ class CategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'lucide-layout-list';
 
-    protected static ?int $navigationSort = 200;
+    protected static ?int $navigationSort = 100;
+
+    public static function getModelLabel(): string
+    {
+        return __('categories.title_singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('categories.title');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.getNavigationGroup2');
+    }
 
     public static function form(Form $form): Form
     {
@@ -55,7 +70,7 @@ class CategoryResource extends Resource
                             ->default('#22b3e0'),
                         IconPicker::make('icon')
                             ->label(__('categories.fields.icon'))
-//                            ->sets(['lucide-icons'])
+                            //                            ->sets(['lucide-icons'])
                             ->sets(['heroicons', 'fontawesome-solid'])
                             ->columnSpan([
                                 'sm' => 2,
@@ -73,7 +88,7 @@ class CategoryResource extends Resource
                             ->afterStateHydrated(function (Toggle $component, string $state) {
                                 $component->state($state == VisibilityStatusEnum::ACTIVE->value);
                             })
-                            ->dehydrateStateUsing(fn (string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value)
+                            ->dehydrateStateUsing(fn(string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value)
                     ])
             ]);
     }
@@ -91,22 +106,22 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->label(__('categories.fields.type'))
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         SpendTypeEnum::EXPENSE->value => 'warning',
                         SpendTypeEnum::INCOME->value => 'primary',
                     })
-                    ->formatStateUsing(fn (string $state): string => __("categories.types.{$state}.label"))
+                    ->formatStateUsing(fn(string $state): string => __("categories.types.{$state}.label"))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('monthly_balance')
                     ->label(__('categories.fields.monthly_balance')),
                 Tables\Columns\IconColumn::make('status')
                     ->label(__('categories.fields.is_visible'))
-                    ->icon(fn (string $state): string => match ($state) {
+                    ->icon(fn(string $state): string => match ($state) {
                         VisibilityStatusEnum::ACTIVE->value => 'lucide-check-circle',
                         VisibilityStatusEnum::INACTIVE->value => 'lucide-x-circle',
                         default => 'lucide-x-circle',
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         VisibilityStatusEnum::ACTIVE->value => 'success',
                         VisibilityStatusEnum::INACTIVE->value => 'danger',
                         default => 'gray',
@@ -124,7 +139,7 @@ class CategoryResource extends Resource
             ->filters([
                 Filter::make('status')
                     ->label(__('categories.fields.is_visible'))
-                    ->query(fn (Builder $query): Builder => $query->where('status', VisibilityStatusEnum::ACTIVE->value))
+                    ->query(fn(Builder $query): Builder => $query->where('status', VisibilityStatusEnum::ACTIVE->value))
                     ->toggle(),
                 Tables\Filters\TrashedFilter::make(),
             ])
@@ -146,23 +161,23 @@ class CategoryResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             TransactionsRelationManager::class
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListCategories::route('/'),
-//            'create' => Pages\CreateCategory::route('/create'),
-//            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            //            'create' => Pages\CreateCategory::route('/create'),
+            //            'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
-    }    
-    
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

@@ -33,7 +33,7 @@ class Account extends Model implements HasCurrentTenantLabel
 
     public function getCurrentTenantLabel(): string
     {
-        return 'Selected account';
+        return __('messages.selectedAccount');
     }
 
     public function owner(): BelongsTo

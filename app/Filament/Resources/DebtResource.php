@@ -30,7 +30,22 @@ class DebtResource extends Resource
 
     protected static ?string $navigationIcon = 'helping-hand';
 
-    protected static ?int $navigationSort = 500;
+    protected static ?int $navigationSort = 3;
+
+    public static function getModelLabel(): string
+    {
+        return __('debts.title_singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('debts.title');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.getNavigationGroup1');
+    }
 
     public static function form(Form $form): Form
     {
@@ -101,7 +116,7 @@ class DebtResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn(Model $record) => $record->progress. '%')
+                            ->label(fn(Model $record) => $record->progress . '%')
                     ]),
                 TextColumn::make('wallet.name')
                     ->label(__('debts.fields.initial_wallet'))
@@ -117,15 +132,13 @@ class DebtResource extends Resource
                     ->searchable()
                     ->label(__('debts.fields.description')),
             ])
-            ->filters([
-
-            ])
+            ->filters([])
             ->actions([
                 Action::make('deposit')
                     ->label(__('debts.actions.debt_transaction'))
                     ->color('danger')
                     ->icon('lucide-trending-up')
-                    ->form(function(Debt $debt){
+                    ->form(function (Debt $debt) {
                         return (new Pages\ListDebts())->getDebtTransactionFields(debtId: $debt->id);
                     })
                     ->action(function (array $data) {
@@ -143,20 +156,20 @@ class DebtResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListDebts::route('/'),
-//            'create' => Pages\CreateDebt::route('/create'),
-//            'edit' => Pages\EditDebt::route('/{record}/edit'),
+            //            'create' => Pages\CreateDebt::route('/create'),
+            //            'edit' => Pages\EditDebt::route('/{record}/edit'),
         ];
-    }    
+    }
 }

@@ -15,6 +15,8 @@ class LatestTransaction extends TableWidget
 
     protected static ?int $sort = 3;
 
+    protected static ?string $heading = '';
+
     public function table(Table $table): Table
     {
         return $table
@@ -24,7 +26,7 @@ class LatestTransaction extends TableWidget
             ->columns((new TransactionResource())->tableColumns())
             ->actions([
                 Action::make('view')
-                    ->url(fn (Transaction $record): string => TransactionResource::getUrl('edit', ['record' => $record])),
+                    ->url(fn(Transaction $record): string => TransactionResource::getUrl('edit', ['record' => $record])),
             ]);
     }
 }
