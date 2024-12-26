@@ -24,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Coolify
+        if ($this->app->environment('production')) {
+            URL::forceRootUrl(config('app.url'));
+        }
+
         Model::unguard();
         WalletConfigure::ignoreMigrations();
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
