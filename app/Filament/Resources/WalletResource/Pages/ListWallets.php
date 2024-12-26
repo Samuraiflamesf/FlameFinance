@@ -25,16 +25,19 @@ class ListWallets extends ListRecords
     {
         return [
             'all' => Tab::make()
+                ->label(__('messages.all'))
                 ->icon('lucide-wallet')
                 ->badge(Wallet::tenant()->count()),
             WalletTypeEnum::GENERAL->value => Tab::make()
+                ->label(__('messages.general'))
                 ->icon('badge-dollar-sign')
                 ->badge(Wallet::tenant()->where('type', WalletTypeEnum::GENERAL->value)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->tenant()->where('type', WalletTypeEnum::GENERAL->value)),
+                ->modifyQueryUsing(fn(Builder $query) => $query->tenant()->where('type', WalletTypeEnum::GENERAL->value)),
             WalletTypeEnum::CREDIT_CARD->value => Tab::make()
+                ->label(__('messages.creditCard'))
                 ->icon('lucide-credit-card')
                 ->badge(Wallet::tenant()->where('type', WalletTypeEnum::CREDIT_CARD->value)->count())
-                ->modifyQueryUsing(fn (Builder $query) => $query->tenant()->where('type', WalletTypeEnum::CREDIT_CARD->value)),
+                ->modifyQueryUsing(fn(Builder $query) => $query->tenant()->where('type', WalletTypeEnum::CREDIT_CARD->value)),
         ];
     }
 }

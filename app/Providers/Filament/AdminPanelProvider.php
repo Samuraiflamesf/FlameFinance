@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Sky,
             ])
-            ->sidebarWidth('17rem')
+            ->sidebarWidth('18rem')
             ->favicon(asset('brands/favicon.ico'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -69,18 +69,18 @@ class AdminPanelProvider extends PanelProvider
                     FilamentApexChartsPlugin::make(),
                     BreezyCore::make()
                         ->myProfile(hasAvatars: true)
-                        ->enableTwoFactorAuthentication()
+
                 ]
             )
             ->tenant(model: Account::class, slugAttribute: 'id', ownershipRelationship: 'owner')
             ->tenantRegistration(RegisterAccount::class)
             ->tenantProfile(EditAccountProfile::class)
-            ->renderHook('panels::content.start', function () {
-                if (config('app.demo')) {
-                    return view('banner');
-                }
-                return null;
-            })
+            // ->renderHook('panels::content.start', function () {
+            //     if (config('app.demo')) {
+            //        return view('banner');
+            //   }
+            //  return null;
+            // })
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s');
     }

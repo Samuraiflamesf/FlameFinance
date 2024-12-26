@@ -33,6 +33,21 @@ class GoalResource extends Resource
 
     protected static ?int $navigationSort = 400;
 
+    public static function getModelLabel(): string
+    {
+        return __('goals.title_singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('goals.title');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.getNavigationGroup2');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -86,7 +101,7 @@ class GoalResource extends Resource
                     ->label(__('goals.fields.balance'))
                     ->suffixBadges([
                         Badge::make('progress')
-                            ->label(fn(Model $record) => $record->progress. '%')
+                            ->label(fn(Model $record) => $record->progress . '%')
                     ]),
                 TextColumn::make('target_date')
                     ->label(__('goals.fields.target_date'))
@@ -94,7 +109,7 @@ class GoalResource extends Resource
                     ->sortable(),
                 TextColumn::make('currency_code')
                     ->label(__('goals.fields.currency_code'))
-                    ->formatStateUsing(fn (string $state): string => country_with_currency_and_symbol($state))
+                    ->formatStateUsing(fn(string $state): string => country_with_currency_and_symbol($state))
                     ->searchable(),
             ])
             ->filters([
@@ -108,11 +123,11 @@ class GoalResource extends Resource
                         return $query
                             ->when(
                                 $data['target_from'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('target_date', '>=', $date),
+                                fn(Builder $query, $date): Builder => $query->whereDate('target_date', '>=', $date),
                             )
                             ->when(
                                 $data['target_until'],
-                                fn (Builder $query, $date): Builder => $query->whereDate('target_date', '<=', $date),
+                                fn(Builder $query, $date): Builder => $query->whereDate('target_date', '<=', $date),
                             );
                     }),
             ])
@@ -122,7 +137,7 @@ class GoalResource extends Resource
                     ->label(__('goals.actions.deposit'))
                     ->icon('lucide-trending-up')
                     ->color('danger')
-                    ->form(function(Goal $goal){
+                    ->form(function (Goal $goal) {
                         return (new Pages\ListGoals())->getGoalTransactionFields(goalId: $goal->id);
                     })
                     ->action(function (array $data) {
@@ -132,7 +147,7 @@ class GoalResource extends Resource
                     ->label(__('goals.actions.withdraw'))
                     ->icon('lucide-trending-down')
                     ->color('warning')
-                    ->form(function(Goal $goal){
+                    ->form(function (Goal $goal) {
                         return (new Pages\ListGoals())->getGoalTransactionFields(
                             type: 'withdraw',
                             goalId: $goal->id
@@ -152,20 +167,20 @@ class GoalResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListGoals::route('/'),
-//            'create' => Pages\CreateGoal::route('/create'),
-//            'edit' => Pages\EditGoal::route('/{record}/edit'),
+            //            'create' => Pages\CreateGoal::route('/create'),
+            //            'edit' => Pages\EditGoal::route('/{record}/edit'),
         ];
-    }    
+    }
 }

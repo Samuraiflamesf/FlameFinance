@@ -71,9 +71,9 @@ class ListGoals extends ListRecords
     {
         try {
             $wallet = Wallet::findOrFail($data['wallet_id']);
-            $amount = (double) $data['amount'];
+            $amount = (float) $data['amount'];
             $method = 'withdraw';
-            if($data['type'] == 'withdraw') {
+            if ($data['type'] == 'withdraw') {
                 $method = 'deposit';
             }
 
@@ -83,7 +83,7 @@ class ListGoals extends ListRecords
             ]);
 
             Notification::make()
-                ->title('Saved successfully')
+                ->title(__('messages.saved'))
                 ->success()
                 ->send();
         } catch (\Exception $e) {
@@ -92,6 +92,5 @@ class ListGoals extends ListRecords
                 ->danger()
                 ->send();
         }
-
     }
 }

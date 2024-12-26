@@ -28,7 +28,22 @@ class WalletResource extends Resource
 
     protected static ?string $navigationIcon = 'lucide-wallet';
 
-    protected static ?int $navigationSort = 100;
+    protected static ?int $navigationSort = 1;
+
+    public static function getModelLabel(): string
+    {
+        return __('wallets.title_singular');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('wallets.title');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('messages.getNavigationGroup1');
+    }
 
     public static function form(Form $form): Form
     {
@@ -53,7 +68,7 @@ class WalletResource extends Resource
                             ->options(__('wallets.types'))
                             ->default(WalletTypeEnum::GENERAL->value)
                             ->live()
-                            ->disabled(fn (string $operation): bool => $operation !== 'create'),
+                            ->disabled(fn(string $operation): bool => $operation !== 'create'),
                         TextInput::make('balance')
                             ->label(fn(string $operation): string => $operation == 'create' ? __('wallets.fields.initial_balance') : __('wallets.fields.balance'))
                             ->required()
@@ -61,7 +76,7 @@ class WalletResource extends Resource
                             ->inputMode('decimal')
                             ->default(0)
                             ->disabled()
-                            ->visible(fn (Get $get, string $operation): bool => $get('type') == WalletTypeEnum::GENERAL->value && $operation !== 'create'),
+                            ->visible(fn(Get $get, string $operation): bool => $get('type') == WalletTypeEnum::GENERAL->value && $operation !== 'create'),
                         TextInput::make('meta.initial_balance')
                             ->label(__('wallets.fields.initial_balance'))
                             ->required()
@@ -71,7 +86,7 @@ class WalletResource extends Resource
                             ])
                             ->inputMode('decimal')
                             ->default(0)
-                            ->visible(fn (Get $get, string $operation): bool => $get('type') == WalletTypeEnum::GENERAL->value && $operation == 'create'),
+                            ->visible(fn(Get $get, string $operation): bool => $get('type') == WalletTypeEnum::GENERAL->value && $operation == 'create'),
                         TextInput::make('meta.credit')
                             ->label(__('wallets.fields.credit_limit'))
                             ->required()
@@ -79,14 +94,14 @@ class WalletResource extends Resource
                             ->inputMode('decimal')
                             ->default(0)
                             ->columnSpan(fn(string $operation): int => $operation == 'create' ? 1 : 2)
-                            ->visible(fn (Get $get): bool => $get('type') == WalletTypeEnum::CREDIT_CARD->value),
+                            ->visible(fn(Get $get): bool => $get('type') == WalletTypeEnum::CREDIT_CARD->value),
                         TextInput::make('meta.total_due')
                             ->label(__('wallets.fields.total_due'))
                             ->required()
                             ->numeric()
                             ->inputMode('decimal')
                             ->default(0)
-                            ->visible(fn (Get $get, string $operation): bool => $get('type') == WalletTypeEnum::CREDIT_CARD->value && $operation == 'create'),
+                            ->visible(fn(Get $get, string $operation): bool => $get('type') == WalletTypeEnum::CREDIT_CARD->value && $operation == 'create'),
                         Select::make('currency_code')
                             ->label(__('wallets.fields.currency_code'))
                             ->required()
@@ -117,17 +132,17 @@ class WalletResource extends Resource
                             ->label(__('wallets.fields.statement_day_of_month'))
                             ->options(month_ordinal_numbers())
                             ->required()
-                            ->visible(fn (Get $get): bool => $get('type') === WalletTypeEnum::CREDIT_CARD->value),
+                            ->visible(fn(Get $get): bool => $get('type') === WalletTypeEnum::CREDIT_CARD->value),
                         Select::make('payment_due_day_of_month')
                             ->label(__('wallets.fields.payment_due_day_of_month'))
                             ->options(month_ordinal_numbers())
                             ->required()
-                            ->visible(fn (Get $get): bool => $get('type') === WalletTypeEnum::CREDIT_CARD->value),
+                            ->visible(fn(Get $get): bool => $get('type') === WalletTypeEnum::CREDIT_CARD->value),
                         Forms\Components\Toggle::make('exclude')
                             ->label(__('wallets.fields.exclude.title'))
                             ->helperText(__('wallets.fields.exclude.help_text'))
                             ->default(false)
-                            ->visible(fn (Get $get): bool => $get('type') === WalletTypeEnum::GENERAL->value),
+                            ->visible(fn(Get $get): bool => $get('type') === WalletTypeEnum::GENERAL->value),
                     ])->columns(),
             ]);
     }
@@ -138,7 +153,7 @@ class WalletResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('wallets.fields.name'))
-                    ->color(fn (?Model $record) => Color::hex($record->color))
+                    ->color(fn(?Model $record) => Color::hex($record->color))
                     ->weight('bold')
                     ->searchable()
                     ->sortable(),
@@ -151,7 +166,7 @@ class WalletResource extends Resource
                             WalletTypeEnum::GENERAL->value => 'success',
                         };
                     })
-                    ->formatStateUsing(fn (string $state): string => __("wallets.types.{$state}"))
+                    ->formatStateUsing(fn(string $state): string => __("wallets.types.{$state}"))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('balance_float')
                     ->label(__('wallets.fields.balance'))
@@ -159,7 +174,7 @@ class WalletResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('currency_code')
                     ->label(__('wallets.fields.currency_code'))
-                    ->formatStateUsing(fn (string $state): string => country_with_currency_and_symbol($state))
+                    ->formatStateUsing(fn(string $state): string => country_with_currency_and_symbol($state))
                     ->sortable(),
 
             ])
@@ -179,7 +194,7 @@ class WalletResource extends Resource
                     ->action(function (Wallet $wallet) {
                         $wallet->refreshBalance();
                         Notification::make()
-                            ->title("{$wallet->name} Wallet")
+                            ->title("{$wallet->name}")
                             ->body(__('wallets.notifications.balance_refreshed'))
                             ->icon('lucide-refresh-cw')
                             ->color('success')
@@ -195,20 +210,20 @@ class WalletResource extends Resource
                 Tables\Actions\CreateAction::make()->slideOver(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             RelationManagers\TransactionsRelationManager::class,
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListWallets::route('/'),
-//            'create' => Pages\CreateWallet::route('/create'),
-//            'edit' => Pages\EditWallet::route('/{record}/edit'),
+            //            'create' => Pages\CreateWallet::route('/create'),
+            //            'edit' => Pages\EditWallet::route('/{record}/edit'),
         ];
     }
 }
