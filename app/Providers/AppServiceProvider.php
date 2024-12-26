@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Filament\Support\Assets\Css;
 use Bavix\Wallet\WalletConfigure;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Filament\Support\Facades\FilamentAsset;
