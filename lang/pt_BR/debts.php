@@ -5,7 +5,7 @@ use App\Enums\DebtTypeEnum;
 
 return [
     'title' => 'Lançamentos',
-    'title_singular' => 'Lançamento',
+    'title_singular' => 'Dívida',
     'actions' => [
         'debt_transaction' => 'Transferências',
     ],
