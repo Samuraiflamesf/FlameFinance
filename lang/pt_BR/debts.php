@@ -4,10 +4,10 @@ use App\Enums\DebtActionTypeEnum;
 use App\Enums\DebtTypeEnum;
 
 return [
-    'title' => 'Dívidas',
-    'title_singular' => 'Dívida',
+    'title' => 'Lançamentos',
+    'title_singular' => 'Lançamento',
     'actions' => [
-        'debt_transaction' => 'Transação de Dívida',
+        'debt_transaction' => 'Transferências',
     ],
     'fields' => [
         'name' => 'Nome',

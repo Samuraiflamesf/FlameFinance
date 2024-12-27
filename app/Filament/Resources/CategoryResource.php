@@ -2,25 +2,27 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\SpendTypeEnum;
-use App\Enums\VisibilityStatusEnum;
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers\TransactionsRelationManager;
-use App\Models\Category;
-use App\Tables\Columns\IconColorColumn;
-use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\Radio;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Filters\Filter;
+use App\Models\Account;
+use App\Models\Category;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Guava\FilamentIconPicker\Forms\IconPicker;
+use App\Enums\SpendTypeEnum;
+use Filament\Resources\Resource;
+use App\Enums\VisibilityStatusEnum;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Components\Section;
+use App\Tables\Columns\IconColorColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\ColorPicker;
+use Guava\FilamentIconPicker\Forms\IconPicker;
+use App\Filament\Resources\CategoryResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CategoryResource\RelationManagers\TransactionsRelationManager;
 
 class CategoryResource extends Resource
 {
@@ -88,7 +90,11 @@ class CategoryResource extends Resource
                             ->afterStateHydrated(function (Toggle $component, string $state) {
                                 $component->state($state == VisibilityStatusEnum::ACTIVE->value);
                             })
-                            ->dehydrateStateUsing(fn(string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value)
+                            ->dehydrateStateUsing(fn(string $state): string => $state ? VisibilityStatusEnum::ACTIVE->value : VisibilityStatusEnum::INACTIVE->value),
+
+                        // Atribui automaticamente o account_id
+                        Hidden::make('account_id')
+                            ->default(auth()->user()->account_id),
                     ])
             ]);
     }

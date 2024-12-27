@@ -16,6 +16,5 @@ class Login extends BasePage
                 'remember' => true,
             ]);
         }
-
     }
 }

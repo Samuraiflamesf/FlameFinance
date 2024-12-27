@@ -5,8 +5,8 @@ use App\Enums\SpendTypeEnum;
 use App\Enums\VisibilityStatusEnum;
 
 return [
-    'title' => 'Orçamentos',
-    'title_singular' => 'Orçamento',
+    'title' => 'Limites de Gastos',
+    'title_singular' => 'Limite de Gasto',
     'fields' => [
         'name' => 'Nome',
         'amount' => 'Valor',

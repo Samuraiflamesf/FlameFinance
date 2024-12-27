@@ -8,7 +8,12 @@ return [
     */
     "categoryChart" => "Principais Transações por Categoria",
     "latestTransaction" => "Última transação",
-    "transactionChart" => "Transações",
+
+    'transactionChart' => [
+        'name' => 'Balanço do mês',
+        'deposit' => 'Receita',
+        'withdrawal' => 'Despesa',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +35,9 @@ return [
     "creditCard" => "Cartão de crédito",
     "wallets" => "Carteiras",
     "expense" => "Despesa",
-    "income" => "Renda",
-    "withdraw" => "Retirar",
-    "deposit" => "Depósito",
+    "income" => "Receita",
+    "withdraw" => "Despesa",
+    "deposit" => "Receita",
     "payable" => "A pagar",
     "receivable" => "A receber",
 
@@ -46,5 +51,16 @@ return [
     "saved" => "Salvo com sucesso",
     "name" => "Nome",
 
+    /*
+    |--------------------------------------------------------------------------
+    | Error on resources
+    |--------------------------------------------------------------------------
+    */
+
+    'wallet' => [
+        'errors' => [
+            'insufficient_funds' => 'Você não tem saldo suficiente para realizar esta operação.',
+        ],
+    ],
 
 ];

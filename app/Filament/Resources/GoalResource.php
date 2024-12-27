@@ -2,28 +2,29 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GoalResource\Pages;
-use App\Filament\Resources\GoalResource\RelationManagers;
-use App\Filament\Resources\GoalResource\RelationManagers\TransactionsRelationManager;
 use App\Models\Goal;
-use Awcodes\FilamentBadgeableColumn\Components\Badge;
-use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
-use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\ColorColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\Filter;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Resource;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ColorColumn;
+use Filament\Forms\Components\DatePicker;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\DateTimePicker;
+use App\Filament\Resources\GoalResource\Pages;
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use App\Filament\Resources\GoalResource\RelationManagers;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+use App\Filament\Resources\GoalResource\RelationManagers\TransactionsRelationManager;
 
 class GoalResource extends Resource
 {
@@ -77,6 +78,9 @@ class GoalResource extends Resource
                         ColorPicker::make('color')
                             ->label(__('goals.fields.color'))
                             ->default('#22b3e0'),
+                        // Atribui automaticamente o account_id
+                        Hidden::make('account_id')
+                            ->default(auth()->user()->account_id),
                     ])->columns(),
 
             ]);

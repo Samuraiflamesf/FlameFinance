@@ -5,8 +5,8 @@ use App\Enums\TransactionTypeEnum;
 use App\Enums\VisibilityStatusEnum;
 
 return [
-    'title' => 'Transações',
-    'title_singular' => 'Transação',
+    'title' => 'Relatórios',
+    'title_singular' => 'Lançamento',
     'fields' => [
         'amount' => 'Valor',
         'confirmed' => 'Confirmado',

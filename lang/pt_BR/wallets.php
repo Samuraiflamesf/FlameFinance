@@ -3,8 +3,8 @@
 use App\Enums\WalletTypeEnum;
 
 return [
-    'title' => 'Carteiras',
-    'title_singular' => 'Carteira',
+    'title' => 'Minhas Contas',
+    'title_singular' => 'Conta',
     'actions' => [
         'refresh_balance' => 'Atualizar Saldo',
     ],
@@ -30,7 +30,7 @@ return [
         ]
     ],
     'types' => [
-        WalletTypeEnum::GENERAL->value => 'Geral',
+        WalletTypeEnum::GENERAL->value => 'Conta Bancária',
         WalletTypeEnum::CREDIT_CARD->value => 'Cartão de Crédito',
     ]
 ];

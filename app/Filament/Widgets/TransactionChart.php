@@ -27,7 +27,7 @@ class TransactionChart extends ApexChartWidget
 
     protected function getHeading(): ?string
     {
-        return __('messages.transactionChart');
+        return __('messages.transactionChart.name');
     }
     /**
      * Chart options (series, labels, types, size, animations...)
@@ -66,11 +66,11 @@ class TransactionChart extends ApexChartWidget
             ],
             'series' => [
                 [
-                    'name' => 'Deposit',
+                    'name' => __('messages.transactionChart.deposit'),
                     'data' => $transactions->pluck('deposit')->toArray()
                 ],
                 [
-                    'name' => 'Withdrawal',
+                    'name' => __('messages.transactionChart.withdrawal'),
                     'data' => $transactions->pluck('withdraw')->toArray()
                 ],
             ],
@@ -136,7 +136,7 @@ class TransactionChart extends ApexChartWidget
                     'shade' => 'dark',
                     'type' => 'vertical',
                     'shadeIntensity' => 0.5,
-                    'gradientToColors' => ['#d97706', '#c2410c'],
+                    'gradientToColors' => ['#16a34a', '#e02222'],
                     'opacityFrom' => 1,
                     'opacityTo' => 1,
                     'stops' => [0, 100],
@@ -147,7 +147,8 @@ class TransactionChart extends ApexChartWidget
                 'width' => 1,
                 'lineCap' => 'round'
             ],
-            'colors' => ['#f59e0b', '#ea580c'],
+            'colors' => ['#22e05d', '#dc2626'],
+
         ];
     }
 }
